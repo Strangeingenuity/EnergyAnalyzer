@@ -1,0 +1,57 @@
+# ==========================
+# General dependencies & logs
+# ==========================
+node_modules
+npm-debug.log
+yarn-error.log
+pnpm-lock.yaml
+
+# ==========================
+# Git and Docker
+# ==========================
+.git
+.gitignore
+.dockerignore
+
+# ==========================
+# Local editor / environment
+# ==========================
+.vscode
+*.swp
+*.swo
+*.tmp
+.env
+.env.local
+.env.*.local
+
+# ==========================
+# Build outputs
+# ==========================
+.next
+dist
+build
+
+# ==========================
+# Ignore everything except the needed web app and shared package
+# ==========================
+apps/*/node_modules
+apps/*/.next
+apps/*/dist
+apps/*/build
+apps/*/coverage
+
+# Keep only web and contracts
+!apps/web/**
+!packages/contracts/**
+
+# ==========================
+# Ignore big sample or test data
+# ==========================
+samples/
+public/samples/*
+
+# ==========================
+# Misc
+# ==========================
+.DS_Store
+Thumbs.db

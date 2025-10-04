@@ -1,0 +1,40 @@
+services:
+  nilm:
+    build:
+      context: ../apps/nilm
+      dockerfile: Dockerfile
+    ports:
+      - "9000:9000"
+
+  coach:
+    build:
+      context: ../apps/coach
+      dockerfile: Dockerfile
+    ports:
+      - "9100:9100"
+
+  analyzer:
+    build:
+      context: ../apps/analyzer
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      MOCK_MODE: "false"
+      NILM_ENDPOINT: "http://nilm:9000/predict"
+      COACH_ENDPOINT: "http://coach:9100/coach"
+    depends_on:
+      - nilm
+      - coach
+
+  web:
+    build:
+      context: ..                # ✅ Root context so Docker can access packages/
+      dockerfile: apps/web/Dockerfile
+    working_dir: /app
+    environment:
+      NEXT_PUBLIC_AI_URL: "http://analyzer:8000"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - analyzer

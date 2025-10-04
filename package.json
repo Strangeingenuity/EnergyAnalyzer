@@ -1,0 +1,14 @@
+{
+  "name": "energy-ai-app-with-nilm-coach-report",
+  "version": "1.0.0",
+  "description": "Upload a Smart Meter Texas CSV and get a **Home Energy Snapshot** from an AI endpoint.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
